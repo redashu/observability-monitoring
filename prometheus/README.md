@@ -60,11 +60,11 @@ scrape_configs:
 
 ## By default promethes Export metrics  data of it's own server on  http://localhost:1122/metrics
 
-<img src="images/metrics.png" width=400>
+<img src="images/metrics.png" width=600 height=400>
 
 ### checking version and other info 
 
-<img src="images/status.png" width=350>
+<img src="images/status.png">
 
 
 
