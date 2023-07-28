@@ -64,7 +64,7 @@ scrape_configs:
 
 ### checking version and other info 
 
-<img src="images/status.png">
+<img src="images/status.png" width=600 height=400>
 
 
 
