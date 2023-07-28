@@ -38,3 +38,24 @@
 <li> an alertmanager to handle alerts</li>
 <li> various support tools </li> 
 </ol>
+
+### Default configureation file 
+---
+Prometheus.yaml
+...
+```
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+rule_files:
+  # - "first.rules"
+  # - "second.rules"
+
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+      - targets: ['localhost:9090']
+```
+
+
