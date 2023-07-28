@@ -58,4 +58,13 @@ scrape_configs:
       - targets: ['localhost:9090']
 ```
 
+## By default promethes Export metrics  data of it's own server on  http://localhost:1122/metrics
+
+<img src="images/metrics.png" width=400>
+
+### checking version and other info 
+
+<img src="images/status.png" width=350>
+
+
 
