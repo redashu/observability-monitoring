@@ -42,7 +42,7 @@
 ### Default configureation file 
 ---
 Prometheus.yaml
-...
+---
 ```
 global:
   scrape_interval:     15s
