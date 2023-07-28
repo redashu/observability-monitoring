@@ -16,5 +16,13 @@
 
 </ol>
 
-## Prometheus Components 
+## Prometheus Monitoring 
+
+<img src="images/info.png">
+
+<p>As Seen in above picture it can monitoring <b> Server | Network | Database | Applications | Batch jobs | Containers  </b>  and many more </p>
+
+### Architecture and Components 
+
+<img src="images/arch.png">
 
