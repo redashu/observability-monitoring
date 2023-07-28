@@ -21,8 +21,20 @@
 <img src="images/info.png">
 
 <p>As Seen in above picture it can monitoring <b> Server | Network | Database | Applications | Batch jobs | Containers  </b>  and many more </p>
-
+<br>
+<hr>
 ### Architecture and Components 
 
 <img src="images/arch.png">
+
+### Components 
+
+### The Prometheus ecosystem consists of multiple components, many of which are optional:
+
+the main Prometheus server which scrapes and stores time series data
+client libraries for instrumenting application code
+a push gateway for supporting short-lived jobs
+special-purpose exporters for services like HAProxy, StatsD, Graphite, etc.
+an alertmanager to handle alerts
+various support tools
 
