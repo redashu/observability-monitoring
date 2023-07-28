@@ -5,7 +5,7 @@
 # The Observation , Monitoring and alerting Engine 
 <p> Prometheus is a free software application used for event monitoring and alerting. It records metrics in a time series database built using an HTTP pull model, with flexible queries and real-time alerting 
 </p>
-### Some info
+
 ### General Info
 <ol>
     <li> Open Source product </li>
@@ -15,3 +15,6 @@
     <li> Prometheus is inspired by Google's Borgmon </li>
 
 </ol>
+
+## Prometheus Components 
+
