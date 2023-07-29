@@ -23,6 +23,15 @@
 <p>As Seen in above picture it can monitoring <b> Server | Network | Database | Applications | Batch jobs | Containers  </b>  and many more </p>
 <br>
 <hr>
+### Metrics type supported  By prometheus 
+
+```bash
+Counter
+Gauge
+Histogram
+Summary
+```
+<hr>
 ### Architecture and Components 
 
 <img src="images/arch.png">
