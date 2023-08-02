@@ -22,5 +22,16 @@ In Prometheus's expression language, an expression or sub-expression can evaluat
 <li> String - a simple string value; currently unused </li> 
 </ul>
 
+### Instant Vetctor 
+<p> It is Going to have A single value as output for every query </p>
+## Examples 
+
+### Up 
+<img src="iv1.png">
+
+### prometheus_http_requests_total
+
+<img src="pth.png">
+
 
 
