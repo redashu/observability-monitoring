@@ -14,10 +14,13 @@
 <pre>
 Expression language data types
 In Prometheus's expression language, an expression or sub-expression can evaluate to one of four types:
-
-Instant vector - a set of time series containing a single sample for each time series, all sharing the same timestamp
-Range vector - a set of time series containing a range of data points over time for each time series
-Scalar - a simple numeric floating point value
-String - a simple string value; currently unused
 </pre>
+<ul> 
+<li> Instant vector - a set of time series containing a single sample for each time series, all sharing the same timestamp </li>  
+<li> Range vector - a set of time series containing a range of data points over time for each time series </li> 
+<li> Scalar - a simple numeric floating point value </li> 
+<li> String - a simple string value; currently unused </li> 
+</ul>
+
+
 
