@@ -28,11 +28,11 @@ In Prometheus's expression language, an expression or sub-expression can evaluat
 ## Examples 
 
 ### Up 
-<img src="iv1.png">
+<img src="images/iv1.png">
 
 ### prometheus_http_requests_total
 
-<img src="pth.png">
+<img src="images/pth.png">
 
 ## Range vector
 
@@ -42,11 +42,11 @@ In Prometheus's expression language, an expression or sub-expression can evaluat
 
 ## up[1m]
 
-<img src="rgv1.png">
+<img src="images/rgv1.png">
 
 ### node_cpu_seconds_total[1m]
 
-<img src="rgv2.png">
+<img src="images/rgv2.png">
 
 
 
