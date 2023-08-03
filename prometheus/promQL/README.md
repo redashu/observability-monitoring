@@ -78,3 +78,24 @@ w - weeks - assuming a week has always 7d
 y - years - assuming a year has always 365d
 ```
 
+### Aggregation operator 
+
+```
+Aggregation operators
+Prometheus supports the following built-in aggregation operators that can be used to aggregate the elements of a single instant vector, resulting in a new vector of fewer elements with aggregated values:
+
+sum (calculate sum over dimensions)
+min (select minimum over dimensions)
+max (select maximum over dimensions)
+avg (calculate the average over dimensions)
+group (all values in the resulting vector are 1)
+stddev (calculate population standard deviation over dimensions)
+stdvar (calculate population standard variance over dimensions)
+count (count number of elements in the vector)
+count_values (count number of elements with the same value)
+bottomk (smallest k elements by sample value)
+topk (largest k elements by sample value)
+quantile (calculate φ-quantile (0 ≤ φ ≤ 1) over dimensions)
+```
+
+
