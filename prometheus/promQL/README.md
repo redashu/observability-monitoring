@@ -49,5 +49,32 @@ In Prometheus's expression language, an expression or sub-expression can evaluat
 <img src="images/rgv2.png">
 
 
+## Matchers & Selectors 
 
+### selectors 
+
+```
+=: Select labels that are exactly equal to the provided string.
+!=: Select labels that are not equal to the provided string.
+=~: Select labels that regex-match the provided string.
+!~: Select labels that do not regex-match the provided string.
+```
+
+### Example query 
+
+<img src="images/q1.png">
+
+### Range Vector Time Division 
+
+```
+Time durations are specified as a number, followed immediately by one of the following units:
+
+ms - milliseconds
+s - seconds
+m - minutes
+h - hours
+d - days - assuming a day has always 24h
+w - weeks - assuming a week has always 7d
+y - years - assuming a year has always 365d
+```
 
