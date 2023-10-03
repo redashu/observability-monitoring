@@ -88,3 +88,17 @@ node_memory_MemTotal_bytes{node='node1'} / 1024 / 1024
 node_memory_MemFree_bytes / 1024 / 1024
 ```
 
+### used RAM 
+
+```
+((node_memory_MemAvailable_bytes) - (node_memory_MemFree_bytes)) / 1024 / 1024
+```
+
+## CPU related metrics 
+
+### number of cpu core 
+
+```
+count without(cpu, mode) (node_cpu_seconds_total{mode="idle"})
+```
+
