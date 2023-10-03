@@ -45,3 +45,32 @@ Node Exporter is valuable for monitoring the health and performance of servers, 
 
 ---
 **Note:** Ensure proper installation and configuration of both Prometheus and Node Exporter for effective monitoring.
+
+## PromQL for node-exporter
+
+### my k8s cluster is 
+
+```
+k8s_deploy kubectl get no
+NAME     STATUS   ROLES           AGE    VERSION
+master   Ready    control-plane   138m   v1.28.2
+node1    Ready    <none>          137m   v1.28.2
+node2    Ready    <none>          137m   v1.28.2
+```
+
+## checking RAM consumption of node1 -- Using promQL 
+
+### PROMQL 
+
+```
+node_memory_MemTotal_bytes
+```
+
+### Response 
+
+```
+node_memory_MemTotal_bytes{instance="node-exporter-service.monitoring.svc.cluster.local:9100", job="node-exporter", node="node1"}
+4097703936
+node_memory_MemTotal_bytes{instance="node-exporter-service.monitoring.svc.cluster.local:9100", job="node-exporter", node="node2"}
+4097703936
+```
