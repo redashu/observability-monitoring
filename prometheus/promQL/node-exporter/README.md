@@ -68,9 +68,5 @@ node_memory_MemTotal_bytes
 
 ### Response 
 
-```
-node_memory_MemTotal_bytes{instance="node-exporter-service.monitoring.svc.cluster.local:9100", job="node-exporter", node="node1"}
-4097703936
-node_memory_MemTotal_bytes{instance="node-exporter-service.monitoring.svc.cluster.local:9100", job="node-exporter", node="node2"}
-4097703936
-```
+<img src="nodeq1.png">
+
