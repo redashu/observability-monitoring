@@ -58,9 +58,9 @@ node1    Ready    <none>          137m   v1.28.2
 node2    Ready    <none>          137m   v1.28.2
 ```
 
-## checking RAM consumption of node1 -- Using promQL 
+##  Using promQL 
 
-### PROMQL 
+### PROMQL -- Total RAM 
 
 ```
 node_memory_MemTotal_bytes
@@ -69,4 +69,22 @@ node_memory_MemTotal_bytes
 ### Response 
 
 <img src="nodeq1.png">
+
+### RAM in MB and GB for node1 
+
+```
+node_memory_MemTotal_bytes / 1024 / 1024  # in MB 
+```
+
+### for Node1 only 
+
+```
+node_memory_MemTotal_bytes{node='node1'} / 1024 / 1024 
+```
+
+### Free Memory 
+
+```
+node_memory_MemFree_bytes / 1024 / 1024
+```
 
