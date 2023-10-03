@@ -98,4 +98,30 @@ topk (largest k elements by sample value)
 quantile (calculate φ-quantile (0 ≤ φ ≤ 1) over dimensions)
 ```
 
+## Examples of Aggregation operators
 
+### prometheus internal http request (total count)
+
+```
+sum(prometheus_http_requests_total)
+```
+
+### Sum by http status code 
+
+```
+sum(prometheus_http_requests_total) by (code)
+```
+
+### node cpu mode
+
+```
+sum(node_cpu_seconds_total) by (mode)
+```
+
+### cpu -- top 3 status of mode 
+
+```
+topk(3,sum(node_cpu_seconds_total) by (mode))
+```
+
+### lowest 3
