@@ -116,4 +116,30 @@ count without(cpu, mode) (node_cpu_seconds_total{mode="idle"})
 
 ```
 
+## Network Monitoring 
+
+### status of network interfaces 
+
+```
+node_network_up
+```
+
+### NIC properties like MAC | duplex
+
+```
+node_network_info
+```
+
+### Network inbound traffic rate
+
+```
+irate(node_network_receive_bytes_total{device="eth0"}[5m])
+```
+
+### Network output 
+
+```
+irate(node_network_transmit_bytes_total{device="eth0"}[5m])
+
+```
 
