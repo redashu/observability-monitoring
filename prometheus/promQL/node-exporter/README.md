@@ -96,9 +96,24 @@ node_memory_MemFree_bytes / 1024 / 1024
 
 ## CPU related metrics 
 
+### CPU load average 
+
+```
+node_load1
+
+```
+
 ### number of cpu core 
 
 ```
 count without(cpu, mode) (node_cpu_seconds_total{mode="idle"})
 ```
+
+### CPU usage overall percentage 
+
+```
+100 - (avg(irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)
+
+```
+
 
