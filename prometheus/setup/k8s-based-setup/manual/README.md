@@ -95,3 +95,92 @@ kube-system   kube-state-metrics      ClusterIP   None             <none>       
 ➜  manual git:(master) 
 
 ```
+
+
+## Updating configmap of prometheus and rolling out prometheus deployment 
+
+### yamls/cm.yaml 
+
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-configmap
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+
+    scrape_configs:
+      - job_name: 'prometheus'
+        static_configs:
+          - targets: ['prom-server:9090']
+# adding k8s part 
+      - job_name: 'kubernetes-metrics'
+        static_configs:
+          - targets: ['kube-state-metrics.kube-system.svc.cluster.local:8080']
+# adding k8s part 
+      - job_name: 'kubernetes-startburst-presto'
+        static_configs:
+          - targets: ['kube-state-metrics.kube-system.svc.cluster.local:8081']
+      - job_name: 'node-exporter'
+        static_configs:
+          - targets: ['node-exporter-service.monitoring.svc.cluster.local:9100']
+            labels:
+              node: node1
+          - targets: ['node-exporter-service.monitoring.svc.cluster.local:9100']
+            labels:
+              node: node2
+```
+
+### apply changes in CM
+
+```
+kubectl apply -f cm.yaml
+```
+
+### rolling out deployment 
+
+```
+kubectl rollout restart deployment prometheus-deployment
+```
+
+### verify changes 
+
+```
+ prom-data kubectl get po                                                
+NAME                                     READY   STATUS    RESTARTS   AGE
+grafana-54b495b5d8-7ktp5                 1/1     Running   0          50m
+node-exporter-7m55f                      1/1     Running   0          23h
+node-exporter-jbwm5                      1/1     Running   0          23h
+prometheus-deployment-6cfcbcf5d7-kw5x4   1/1     Running   0          4m38s
+➜  prom-data 
+➜  prom-data 
+➜  prom-data kubectl  exec -it prometheus-deployment-6cfcbcf5d7-kw5x4 -- cat  /etc/prometheus/prometheus.yml
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['prom-server:9090']
+  - job_name: 'kubernetes-metrics'
+    static_configs:
+      - targets: ['kube-state-metrics.kube-system.svc.cluster.local:8080']
+  - job_name: 'kubernetes-startburst-presto'
+    static_configs:
+      - targets: ['kube-state-metrics.kube-system.svc.cluster.local:8081']
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter-service.monitoring.svc.cluster.local:9100']
+        labels:
+          node: node1
+      - targets: ['node-exporter-service.monitoring.svc.cluster.local:9100']
+        labels:
+          node: node2
+```
+
+### you can also verify from prometheus GUI -- by access the status -- > target section 
+
+<img src="g.png">
+
