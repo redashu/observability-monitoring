@@ -1,4 +1,4 @@
-## Steps to Install on Linux Server
+## Steps to Install on Linux Server of Elasticsearch 7 
 
 ### Installing java
 
@@ -36,33 +36,7 @@ sudo yum install elasticsearch
 
 ```
 
-### Above step may give you output like this 
-
-```
- Installing : elasticsearch-8.10.2-1.x86_64                                                                                       1/1 
---------------------------- Security autoconfiguration information ------------------------------
-
-Authentication and authorization are enabled.
-TLS for the transport and HTTP layers is enabled and configured.
-
-The generated password for the elastic built-in superuser is : XvZsEeXtP5GyxKHoaZra
-
-If this node should join an existing cluster, you can reconfigure this with
-'/usr/share/elasticsearch/bin/elasticsearch-reconfigure-node --enrollment-token <token-here>'
-after creating an enrollment token on your existing cluster.
-
-You can complete the following actions at any time:
-
-Reset the password of the elastic built-in superuser with 
-'/usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic'.
-
-Generate an enrollment token for Kibana instances with 
- '/usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana'.
-
-Generate an enrollment token for Elasticsearch nodes with 
-'/usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s node'.
-
--------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------
 ### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using systemd
  sudo systemctl daemon-reload
  sudo systemctl enable elasticsearch.service
@@ -77,7 +51,60 @@ Complete!
 
 ```
 
-### Reset password 
+### start service using above command
+
+```
+
+```
+
+### COnfigure username and password for elasticsingle node
+
+--->/etc/elasticsearch/elasticsearch.yml 
+```
+xpack.security.enabled: true
+discovery.type: single-node
+```
+
+### Restart service
+
+```
+systemctl restart elasticsearch.service 
+```
+
+### setting passwords
+
+```
+[root@ip-172-31-42-241 elasticsearch]# /usr/share/elasticsearch/bin/elasticsearch-setup-passwords  auto
+warning: usage of JAVA_HOME is deprecated, use ES_JAVA_HOME
+Initiating the setup of passwords for reserved users elastic,apm_system,kibana,kibana_system,logstash_system,beats_system,remote_monitoring_user.
+The passwords will be randomly generated and printed to the console.
+Please confirm that you would like to continue [y/N]y
+
+
+Changed password for user apm_system
+PASSWORD apm_system = FI8GxJoD8hHod496zrCD
+
+Changed password for user kibana_system
+PASSWORD kibana_system = iiq6SLmWTw95wacINRak
+
+Changed password for user kibana
+PASSWORD kibana = iiq6SLmWTw95wacINRak
+
+Changed password for user logstash_system
+PASSWORD logstash_system = xYcimKIsXCHzBL47WVwv
+
+Changed password for user beats_system
+PASSWORD beats_system = Zf1ke3vwXygNeBWUcr3E
+
+Changed password for user remote_monitoring_user
+PASSWORD remote_monitoring_user = zb7THiqDhZPx7dq1Wmsg
+
+Changed password for user elastic
+PASSWORD elastic = LEYaUP1pbvhLP1S1zA51
+
+```
+
+### if you want you can Reset password 
 
 ```
 usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic
@@ -91,30 +118,4 @@ New value: vOIANT022*6j9kR_bGXj
 
 ```
 
-### access with https 
 
-```
-https://15.206.174.76:9200/
-```
-
-### you will get response like given below
-
-```
-{
-  "name" : "ip-172-31-14-70.ap-south-1.compute.internal",
-  "cluster_name" : "my-application",
-  "cluster_uuid" : "1lzMHLbUTuujXBIEn50oTQ",
-  "version" : {
-    "number" : "8.10.2",
-    "build_flavor" : "default",
-    "build_type" : "rpm",
-    "build_hash" : "6d20dd8ce62365be9b1aca96427de4622e970e9e",
-    "build_date" : "2023-09-19T08:16:24.564900370Z",
-    "build_snapshot" : false,
-    "lucene_version" : "9.7.0",
-    "minimum_wire_compatibility_version" : "7.17.0",
-    "minimum_index_compatibility_version" : "7.0.0"
-  },
-  "tagline" : "You Know, for Search"
-}
-```
