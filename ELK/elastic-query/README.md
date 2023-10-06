@@ -1,74 +1,27 @@
-# Elasticsearch Basics
+### How to list all the indexes
 
-## What is Elasticsearch?
+```
+ ELK git:(master) curl -XGET "http://localhost:9200/_cat/indices?v"
 
-Elasticsearch is an open-source, distributed search and analytics engine designed to handle large volumes of data, providing near-real-time search capabilities.
+health status index                           uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   .geoip_databases                Ay6APRK9Q0GXG2BPEHuufA   1   0         43            0     40.1mb         40.1mb
+green  open   .kibana-event-log-7.14.0-000001 Brdu-7dkQ5mvzFQ3s-ArKA   1   0          1            0      5.6kb          5.6kb
+green  open   .kibana_7.14.0_001              XoVs09MrTISdGAyK1WMUDQ   1   0        118           23      2.2mb          2.2mb
+green  open   .apm-custom-link                7aun2QueRVegbAYrDZ9iPQ   1   0          0            0       208b           208b
+green  open   .apm-agent-configuration        I7FGmkIwTnGzoqFpWRjCZQ   1   0          0            0       208b           208b
+green  open   kibana_sample_data_logs         6XJngLylT2an3H0-Fl132Q   1   0      14074            0      7.2mb          7.2mb
+green  open   .kibana_task_manager_7.14.0_001 yIeZGoM_T6W_YEL0mwbFiw   1   0         14        26763      2.6mb          2.6mb
+green  open   .async-search                   iX1iR_ATQCS4VePc67RJeQ   1   0          3            0     33.5kb         33.5kb
+➜  ELK git:(master) 
 
-## Technical Details
 
-### 1. Programming Language
+```
 
-Elasticsearch is primarily written in **Java**.
+### listing mappings / schema / columns of  indexes
 
-### 2. Initial Release
+```
+ ELK git:(master) curl -XGET "http://15.207.1.202:9200/log_data/_mappings"                        
 
-The initial release of Elasticsearch was in **2010**.
-
-### 3. Founder
-
-Elasticsearch was founded by **Shay Banon** to address the limitations of existing search technologies.
-
-### 4. License
-
-Elasticsearch is released under the **Apache License, Version 2.0**, making it open source and free to use.
-
-### 5. Architecture
-
-- Elasticsearch follows a distributed, multi-tenant architecture.
-- It uses a master-node architecture with data nodes and client nodes.
-- Master nodes manage the cluster, while data nodes store and retrieve data.
-
-### 6. Data Storage
-
-Elasticsearch stores data in a structure called **JSON-like documents**, which are stored in **indices**.
-
-### 7. Query Language
-
-Elasticsearch Query DSL (Domain Specific Language) is used for querying data. It supports a wide range of queries, including full-text queries, term queries, and more.
-
-### 8. Transport Protocol
-
-Elasticsearch nodes communicate with each other and with clients using the **HTTP/RESTful API** over TCP.
-
-### 9. Clustering
-
-- Elasticsearch clusters consist of multiple nodes that work together.
-- It uses a distributed system approach for scalability and fault tolerance.
-
-### 10. Indexing and Sharding
-
-- Data is divided into **indices**, and each index can be split into **shards** for horizontal scaling.
-- Shards can have **replicas** for redundancy and high availability.
-
-### 11. Plugins
-
-Elasticsearch has a modular design, and functionality can be extended through **plugins**. There are various community-contributed plugins and official plugins provided by Elastic.
-
-### 12. Ecosystem
-
-Elasticsearch is a part of the **Elastic Stack (ELK Stack)**, which includes Elasticsearch, Logstash, and Kibana. It is commonly used for log analytics, full-text search, and other data analysis tasks.
-
-### 13. Community and Support
-
-Elasticsearch has a strong and active **open-source community**. There is official documentation, forums, and community support available.
-
-### 14. Updates and Versioning
-
-Elasticsearch regularly releases new versions with improvements, bug fixes, and new features. Users can choose to deploy the version that best fits their requirements.
-
-### 15. Integration
-
-Elasticsearch can be integrated with various data sources, applications, and visualization tools.
-
-Feel free to explore more, and for detailed information, refer to the official Elasticsearch documentation.
+{"log_data":{"mappings":{"properties":{"log_level":{"type":"text","fields":{"keyword":{"type":"keyword","ignore_above":256}}},"message":{"type":"text","fields":{"keyword":{"type":"keyword","ignore_above":256}}},"source":{"type":"text","fields":{"keyword":{"type":"keyword","ignore_above":256}}},"timestamp":{"type":"date"}}}}}%        
+```
 
